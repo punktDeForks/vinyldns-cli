@@ -10,6 +10,7 @@ RUN cd /go/src/github.com/vinyldns/vinyldns-cli \
 FROM scratch
 
 WORKDIR /root/
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 COPY --from=builder /go/src/github.com/vinyldns/vinyldns-cli/vinyldns .
 
 ENTRYPOINT ["./vinyldns"]
